@@ -1,0 +1,22 @@
+{
+    "name": "my-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "eslint": "8.26.0",
+        "eslint-config-next": "13.0.1",
+        "next": "13.0.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "moralis": "^1.8.0",
+        "moralis-v1": "^1.11.0",
+        "react-moralis": "^1.4.0",
+        "web3uikit": "^0.1.159"
+    }
+}
