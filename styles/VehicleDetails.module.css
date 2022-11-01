@@ -1,0 +1,166 @@
+.main_section {
+    padding: 1rem 2rem;
+    width: 100%;
+    min-height: 120vh;
+    /* border: 2px solid brown; */
+}
+
+.top_section {
+    /* border: 2px solid yellow; */
+    display: flex;
+    min-height: 70vh;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.vehicle_content {
+    display: flex;
+    flex: 0.6;
+    /* border: 2px solid green; */
+}
+
+.vehicle_content .vehicle_img {
+    flex: 0.5;
+    /* border: 2px solid gray; */
+}
+
+.vehicle_content .vehicle_img img {
+    width: 100% !important;
+    height: 100%;
+    object-fit: contain;
+    /* max-height: 60% !important; */
+    /* border: 2px solid red; */
+}
+
+.vehicle_content .vehicle_details {
+    flex: 0.5;
+    background: #fbfbfb;
+    /* border: 2px solid pink; */
+}
+
+.vehicle_bookings {
+    flex: 0.4;
+    box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 15%);
+    /* border: 2px solid red; */
+}
+
+.vehicle_bookings button {
+    width: 100%;
+    padding: 7px;
+    font-size: 18px;
+}
+
+.vehicle_bookings h2 {
+    font-size: 30px;
+    font-family: fangsong;
+    margin-left: 22px;
+    margin-bottom: 32px;
+}
+
+.vehicle_details h2 {
+    font-size: 30px;
+    font-family: fangsong;
+    margin-left: 9px;
+    margin-bottom: 32px;
+}
+
+.vehicle_details div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 0 5px 10px;
+}
+
+.vehicle_details div span {
+    font-size: 18px;
+    font-weight: 900;
+    font-family: fangsong;
+    margin-right: 8px;
+}
+
+.vehicle_details div h6 {
+    margin: 0;
+    /* margin: 5px; */
+    font-size: 18px;
+    font-weight: 300;
+    font-family: fangsong;
+}
+
+.center_section {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.main_section h1 {
+    font-size: 35px;
+    font-family: fangsong;
+    text-align: center;
+    margin: 5rem auto 2rem auto;
+}
+
+.center_section h2 {
+    font-size: 20px;
+    font-family: fangsong;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.center_section table {
+    width: 100%;
+}
+
+.center_section table thead tr {
+    font-family: fangsong;
+    background: #ededed;
+}
+
+.center_section tr,
+.center_section td,
+.center_section th {
+    border: 1px solid rgb(218, 218, 218);
+    padding: 10px;
+}
+
+.center_section .left_table {
+    flex: 0.5;
+    /* border: 2px solid black; */
+}
+
+.center_section .right_table {
+    flex: 0.5;
+    /* border: 2px solid green; */
+}
+
+.bottom_section {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.bottom_section h2 {
+    font-size: 20px;
+    font-family: fangsong;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.bottom_table {
+    width: 100%;
+}
+
+.bottom_table table {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.bottom_table table tr,
+.bottom_table table td,
+.bottom_table table th {
+    border: 1px solid rgb(218, 218, 218);
+    padding: 10px;
+}
+
+.bottom_table table thead tr {
+    font-family: fangsong;
+    background: #ededed;
+}
