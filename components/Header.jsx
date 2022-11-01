@@ -7,7 +7,7 @@ export default function Header() {
     <nav className={styles.header}>
       <div>
         <Link href="/">
-          <h1> Dbank</h1>
+          <h1> CarPooling DApp</h1>
         </Link>
       </div>
       <div>

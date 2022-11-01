@@ -20,6 +20,50 @@
     cursor: pointer;
 }
 
+.landing {
+    margin: 2.5rem 0;
+    display: flex;
+    /* justify-content: center; */
+    align-items: stretch;
+    min-height: 70vh;
+}
+
+.landing .left {
+    flex: 0.5;
+    /* border: 2px solid red; */
+    padding: 8vmin 3vmin;
+    background-color: #dbfff2;
+}
+
+.landing .left h1 {
+    font-size: 8vmin;
+    font-weight: 500;
+}
+
+.landing .left p {
+    margin-bottom: 35px;
+}
+
+.landing .left a {
+    background: #3c3c3c;
+    padding: 12px 15px;
+    border-radius: 7px;
+    color: white;
+    font-family: fangsong;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.landing .right {
+    flex: 0.5 !important;
+    /* border: 2px solid rgb(14, 4, 4); */
+}
+
+.landing .right img {
+    width: 100% !important;
+    /* height: 100% !important; */
+}
+
 
 /* ========================================= */
 
