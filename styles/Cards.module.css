@@ -1,0 +1,107 @@
+.title {
+    text-align: center;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.mainContainer {
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    min-height: 330px;
+    width: 300px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #fdfdfd;
+    box-shadow: 3px 6px 12px 0px rgba(0, 0, 0, 0.1);
+    /* border: 2px solid yellow; */
+}
+
+.card div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 0 5px 10px;
+}
+
+.card div span {
+    font-size: 16px;
+    font-weight: 900;
+    font-family: fangsong;
+    margin-right: 8px;
+}
+
+.card div h6 {
+    margin: 0;
+    /* margin: 5px; */
+    font-size: 16px;
+    font-weight: 300;
+    font-family: fangsong;
+}
+
+.card img {
+    width: 100% !important;
+    max-height: 60% !important;
+    /* border: 2px solid red; */
+}
+
+.card a {
+    margin: 5px 9px;
+    background: black;
+    color: white;
+    padding: 9px 0;
+    font-family: fangsong;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.card p {
+    /* margin: 0; */
+}
+
+.btn {
+    margin-left: 40px;
+    margin-top: 30px;
+    width: 20%;
+    height: 50px;
+    border-radius: 10px;
+    color: #2e7daf;
+    background-color: #a0d9fc;
+    padding: auto;
+    border: 3px solid #2e7daf;
+    font-size: 20px;
+}
+
+.withdrawContainer {
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.btn2 {
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 10%;
+    height: 30px;
+    border-radius: 10px;
+    /* color: white; */
+    background-color: rgb(251, 197, 197);
+    padding: auto;
+    border: none;
+    border: 1px solid;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .mainContainer {
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
