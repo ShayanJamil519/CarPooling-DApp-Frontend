@@ -86,6 +86,28 @@
     font-family: fangsong;
 }
 
+.confirm {
+    min-height: 15vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: #f7f7f7;
+}
+
+.confirm span {
+    font-size: 25px;
+}
+
+.confirm button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background: black;
+    color: white;
+    border-radius: 9px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
 .center_section {
     display: flex;
     width: 100%;

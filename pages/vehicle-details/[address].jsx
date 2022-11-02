@@ -104,11 +104,26 @@ const vehicledetails = () => {
                 key: "no",
                 inputWidth: "100%",
               },
+              {
+                name: "Total price",
+                type: "number",
+                value: "",
+                key: "price",
+                inputWidth: "100%",
+              },
             ]}
             // title="Book your Carpool"
             id="Main Form"
           />
         </div>
+      </div>
+
+      <div className={styles.confirm}>
+        <span>
+          Once you have availed carpool service, don't forget to click this
+          button!
+        </span>
+        <button>Service Availed</button>
       </div>
 
       <h1>Carpooler History:</h1>
