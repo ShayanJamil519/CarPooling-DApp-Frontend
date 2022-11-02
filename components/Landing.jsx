@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <div className={styles.landing}>
       <div className={styles.left}>
-        <h1>Decentralized CarPooling</h1>
+        <h1>Decentralized Carpooling</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio modi
           vel sequi sunt ratione ipsa animi error earum provident asperiores!

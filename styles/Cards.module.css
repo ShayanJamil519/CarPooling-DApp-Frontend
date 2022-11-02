@@ -1,12 +1,15 @@
 .title {
     text-align: center;
-    font-size: 30px;
-    text-decoration: underline;
+    font-size: 40px;
+    margin-top: 2rem;
+    font-family: fangsong;
+    margin-bottom: 32px;
 }
 
 .mainContainer {
     margin: 50px 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
@@ -59,10 +62,6 @@
     border-radius: 8px;
     text-align: center;
     font-size: 20px;
-}
-
-.card p {
-    /* margin: 0; */
 }
 
 .btn {

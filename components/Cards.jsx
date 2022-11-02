@@ -15,7 +15,7 @@ const Cards = () => {
 
   return (
     <div>
-      <h3 className={styles.title}>Services</h3>
+      <h3 className={styles.title}>Carpool Services</h3>
       <div className={styles.mainContainer}>
         {roughData.map((item, i) => {
           return (
@@ -40,6 +40,11 @@ const Cards = () => {
               <div>
                 <span>Destination: </span>
                 <h6>{item.destination}</h6>
+              </div>
+
+              <div>
+                <span>Starting Time: </span>
+                <h6>{item.startTime}</h6>
               </div>
 
               <div>

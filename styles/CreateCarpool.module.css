@@ -1,0 +1,45 @@
+.main_section {
+    margin: 3rem 2rem;
+}
+
+.main_section div {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.main_section h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family: fangsong;
+    margin-bottom: 32px;
+}
+
+.main_section .left {
+    flex: 0.3;
+    align-items: stretch;
+    /* border: 2px solid green; */
+}
+
+.main_section .left img {
+    width: 100% !important;
+    height: 100%;
+    object-fit: contain;
+}
+
+.main_section .right {
+    flex: 0.5;
+    padding: 20px 5px;
+    box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 15%);
+    /* border: 2px solid red; */
+}
+
+.main_section .right form {
+    width: 100% !important;
+}
+
+.main_section .right form button {
+    width: 100%;
+    padding: 7px;
+    font-size: 18px;
+}
