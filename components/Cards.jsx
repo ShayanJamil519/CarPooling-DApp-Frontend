@@ -57,7 +57,7 @@ const Cards = () => {
                 <h6>{item.pricePerSlot}</h6>
               </div>
 
-              <Link href={`vehicle-details/${item.address}`}>Book Now</Link>
+              <Link href={`vehicle-details/${item.carpoolId}`}>Book Now</Link>
             </div>
           );
         })}

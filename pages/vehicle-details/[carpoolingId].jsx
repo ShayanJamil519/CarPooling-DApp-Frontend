@@ -7,7 +7,7 @@ import { Form } from "web3uikit";
 
 const vehicledetails = () => {
   const router = useRouter();
-  const { address } = router.query;
+  const { carpoolingId } = router.query;
 
   //   useEffect(() => {
   //     if (!router.isReady) return;
