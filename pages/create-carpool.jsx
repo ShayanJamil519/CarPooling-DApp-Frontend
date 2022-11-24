@@ -1,12 +1,18 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import { Form } from "web3uikit";
+import { Form, Input } from "web3uikit";
 import { roughData } from "../dummyData";
 import styles from "../styles/CreateCarpool.module.css";
-import { handlePinFileToIPFS } from "../pinata";
+import { handlePinFileToIPFS, handlePinJSONToIPFS } from "../pinata";
 
 const CreateCarpool = () => {
-  //This function uploads the NFT image to IPFS
+  const [formParams, updateFormParams] = useState({
+    ownerAddress: "",
+    origin: "",
+    destination: "",
+    totalSlots: "",
+    pricePerSlot: "",
+  });
 
   let url;
 
@@ -31,6 +37,56 @@ const CreateCarpool = () => {
     }
   }
 
+  //This function uploads the metadata to IPFS
+  async function uploadMetadataToIPFS() {
+    const { ownerAddress, origin, destination, totalSlots, pricePerSlot } =
+      formParams;
+    //Make sure that none of the fields are empty
+    if (
+      !ownerAddress ||
+      !origin ||
+      !destination ||
+      !totalSlots ||
+      !pricePerSlot
+    )
+      return;
+    const nftJSON = {
+      ownerAddress,
+      origin,
+      destination,
+      totalSlots,
+      pricePerSlot,
+      image: url,
+    };
+
+    if (url) {
+      const imageUploadResult = await handlePinJSONToIPFS(nftJSON);
+      console.log("metadata uploaded!!!");
+    } else {
+      console.log("error uploading JSON metadata:");
+    }
+
+    // try {
+    //   if (url) {
+    //     const imageUploadResult = await handlePinJSONToIPFS(nftJSON);
+    //     console.log("metadata uploaded!!!");
+    //   }
+    // } catch (e) {
+    //   console.log("error uploading JSON metadata:", e);
+    // }
+  }
+
+  async function createCarpool(e, data) {
+    e.preventDefault();
+    console.log("form submitted");
+    try {
+      // console.log(formParams);
+      await uploadMetadataToIPFS();
+    } catch (e) {
+      console.log("error uploading JSON metadata:", e);
+    }
+  }
+
   return (
     <div className={styles.main_section}>
       <h1>Create Your Carpool</h1>
@@ -44,8 +100,58 @@ const CreateCarpool = () => {
           />
         </div>
         <div className={styles.right}>
-          <Form
-            // onSubmit=
+          <form onSubmit={createCarpool}>
+            <Input
+              label="Owner Address"
+              name="Owner Address"
+              type="text"
+              onChange={(e) =>
+                updateFormParams({
+                  ...formParams,
+                  ownerAddress: e.target.value,
+                })
+              }
+            />
+            <Input
+              label="Origin"
+              name="Origin"
+              type="text"
+              onChange={(e) =>
+                updateFormParams({ ...formParams, origin: e.target.value })
+              }
+            />
+            <Input
+              label="Destination"
+              name="Destination"
+              type="text"
+              onChange={(e) =>
+                updateFormParams({ ...formParams, destination: e.target.value })
+              }
+            />
+            <Input
+              label="Number of slots for booking"
+              name="Number of slots for booking"
+              type="number"
+              onChange={(e) =>
+                updateFormParams({ ...formParams, totalSlots: e.target.value })
+              }
+            />
+            <Input
+              label="Price per slot"
+              name="Price per slot"
+              type="number"
+              onChange={(e) =>
+                updateFormParams({
+                  ...formParams,
+                  pricePerSlot: e.target.value,
+                })
+              }
+            />
+            <button style={{ marginTop: "10px" }}>Submit</button>
+          </form>
+
+          {/* <Form
+            onSubmit={createCarpool}
             data={[
               {
                 name: "Owner Address",
@@ -85,7 +191,7 @@ const CreateCarpool = () => {
             ]}
             // title="Book your Carpool"
             id="Main Form"
-          />
+          /> */}
           <div>
             <label
               className="block text-purple-500 text-sm font-bold mb-2"

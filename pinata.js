@@ -10,7 +10,8 @@ import FormData from "form-data";
 // const pinataSecretApiKey: string = env.PINATA_SECRET_API_KEY;
 
 const pinataApiKey = "95d0e42c41aa3fde6bd2";
-const pinataSecretApiKey = "";
+const pinataSecretApiKey =
+  "984373b2b73c8640c59bdc12f134162e2829e637bc4903985c01d498a0f5a5d1";
 
 export const getPinataApiConfig = () => {
   const config = {
