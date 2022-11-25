@@ -15,6 +15,7 @@ const CreateCarpool = () => {
   });
 
   let url;
+  let metadataUrl = "";
 
   //This function uploads the NFT image to IPFS
   async function OnChangeFile(e) {
@@ -58,22 +59,18 @@ const CreateCarpool = () => {
       pricePerSlot,
       image: url,
     };
+    // https://gateway.pinata.cloud/ipfs/QmXH1rBtfV9BHC8kuZzydTuayLGS3NNBzkQbJSmwKFWeST
 
     if (url) {
       const imageUploadResult = await handlePinJSONToIPFS(nftJSON);
       console.log("metadata uploaded!!!");
+      // console.log("imageUpload result", imageUploadResult);
+      // console.log("imageUpload result", imageUploadResult.IpfsHash);
+      metadataUrl =
+        "https://gateway.pinata.cloud/ipfs/" + imageUploadResult.IpfsHash;
     } else {
       console.log("error uploading JSON metadata:");
     }
-
-    // try {
-    //   if (url) {
-    //     const imageUploadResult = await handlePinJSONToIPFS(nftJSON);
-    //     console.log("metadata uploaded!!!");
-    //   }
-    // } catch (e) {
-    //   console.log("error uploading JSON metadata:", e);
-    // }
   }
 
   async function createCarpool(e, data) {

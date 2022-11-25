@@ -55,9 +55,12 @@ export const handlePinFileToIPFS = async ({
         "Content-Type": `multipart/form-data;`,
         ...getPinataApiConfig(),
       },
+
       data: data,
     });
-
+    // return {
+    //   pinataURL: "https://gateway.pinata.cloud/ipfs/" + res.data.IpfsHash,
+    // };
     return res.data;
   } catch (error) {
     //  Handle error
