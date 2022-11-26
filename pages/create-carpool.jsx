@@ -4,10 +4,11 @@ import { Form, Input } from "web3uikit";
 import { roughData } from "../dummyData";
 import styles from "../styles/CreateCarpool.module.css";
 import { handlePinFileToIPFS, handlePinJSONToIPFS } from "../pinata";
+import Carpool from "../constants/Carpool.json";
 
 const CreateCarpool = () => {
   const [formParams, updateFormParams] = useState({
-    ownerAddress: "",
+    // ownerAddress: "",
     origin: "",
     destination: "",
     totalSlots: "",
@@ -16,6 +17,7 @@ const CreateCarpool = () => {
 
   let url;
   let metadataUrl = "";
+  const ethers = require("ethers");
 
   //This function uploads the NFT image to IPFS
   async function OnChangeFile(e) {
@@ -38,50 +40,92 @@ const CreateCarpool = () => {
     }
   }
 
-  //This function uploads the metadata to IPFS
-  async function uploadMetadataToIPFS() {
-    const { ownerAddress, origin, destination, totalSlots, pricePerSlot } =
-      formParams;
-    //Make sure that none of the fields are empty
-    if (
-      !ownerAddress ||
-      !origin ||
-      !destination ||
-      !totalSlots ||
-      !pricePerSlot
-    )
-      return;
-    const nftJSON = {
-      ownerAddress,
-      origin,
-      destination,
-      totalSlots,
-      pricePerSlot,
-      image: url,
-    };
-    // https://gateway.pinata.cloud/ipfs/QmXH1rBtfV9BHC8kuZzydTuayLGS3NNBzkQbJSmwKFWeST
+  // //This function uploads the metadata to IPFS
+  // async function uploadMetadataToIPFS() {
+  //   const { ownerAddress, origin, destination, totalSlots, pricePerSlot } =
+  //     formParams;
+  //   //Make sure that none of the fields are empty
+  //   if (
+  //     !ownerAddress ||
+  //     !origin ||
+  //     !destination ||
+  //     !totalSlots ||
+  //     !pricePerSlot
+  //   )
+  //     return;
+  //   const nftJSON = {
+  //     ownerAddress,
+  //     origin,
+  //     destination,
+  //     totalSlots,
+  //     pricePerSlot,
+  //     image: url,
+  //   };
+  //   // https://gateway.pinata.cloud/ipfs/QmXH1rBtfV9BHC8kuZzydTuayLGS3NNBzkQbJSmwKFWeST
 
-    if (url) {
-      const imageUploadResult = await handlePinJSONToIPFS(nftJSON);
-      console.log("metadata uploaded!!!");
-      // console.log("imageUpload result", imageUploadResult);
-      // console.log("imageUpload result", imageUploadResult.IpfsHash);
-      metadataUrl =
-        "https://gateway.pinata.cloud/ipfs/" + imageUploadResult.IpfsHash;
-    } else {
-      console.log("error uploading JSON metadata:");
-    }
-  }
+  //   if (url) {
+  //     const imageUploadResult = await handlePinJSONToIPFS(nftJSON);
+  //     console.log("metadata uploaded!!!");
+  //     // console.log("imageUpload result", imageUploadResult);
+  //     // console.log("imageUpload result", imageUploadResult.IpfsHash);
+  //     metadataUrl =
+  //       "https://gateway.pinata.cloud/ipfs/" + imageUploadResult.IpfsHash;
+  //     console.log("Meta Data Url " + metadataUrl);
+  //   } else {
+  //     console.log("error uploading JSON metadata:");
+  //   }
+  // }
 
-  async function createCarpool(e, data) {
+  async function createCarpool(e) {
     e.preventDefault();
-    console.log("form submitted");
+
     try {
-      // console.log(formParams);
-      await uploadMetadataToIPFS();
+      //After adding your Hardhat network to your metamask, this code will get providers and signers
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+
+      //Pull the deployed contract instance
+      let contract = new ethers.Contract(Carpool.address, Carpool.abi, signer);
+
+      //massage the params to be sent to the create NFT request
+      const price = ethers.utils.parseUnits(formParams.pricePerSlot, "ether");
+
+      //   string memory _origin,
+      // string memory _destination,
+      // uint256 _slots,
+      // uint256 _price,
+      // string memory tokenURI
+      //actually create the NFT
+      let transaction = await contract.createCarPooling(
+        formParams.origin,
+        formParams.destination,
+        formParams.totalSlots,
+        price,
+        url
+      );
+      await transaction.wait();
+
+      alert("Successfully listed your Carpool!");
+      updateFormParams({
+        origin: "",
+        destination: "",
+        totalSlots: "",
+        pricePerSlot: "",
+      });
+      // window.location.replace("/");
     } catch (e) {
-      console.log("error uploading JSON metadata:", e);
+      alert("Upload error" + e);
     }
+
+    // abdullah
+    // e.preventDefault();
+    // console.log("form submitted");
+    // try {
+    //   // console.log(formParams);
+    //   await uploadMetadataToIPFS();
+    // } catch (e) {
+    //   console.log("error uploading JSON metadata:", e);
+    // }
   }
 
   return (
@@ -98,7 +142,7 @@ const CreateCarpool = () => {
         </div>
         <div className={styles.right}>
           <form onSubmit={createCarpool}>
-            <Input
+            {/* <Input
               label="Owner Address"
               name="Owner Address"
               type="text"
@@ -108,7 +152,7 @@ const CreateCarpool = () => {
                   ownerAddress: e.target.value,
                 })
               }
-            />
+            /> */}
             <Input
               label="Origin"
               name="Origin"
@@ -144,6 +188,14 @@ const CreateCarpool = () => {
                 })
               }
             />
+
+            <div>
+              <label className="" htmlFor="image">
+                Upload Image
+              </label>
+              <input type={"file"} onChange={OnChangeFile}></input>
+            </div>
+
             <button style={{ marginTop: "10px" }}>Submit</button>
           </form>
 
@@ -189,7 +241,8 @@ const CreateCarpool = () => {
             // title="Book your Carpool"
             id="Main Form"
           /> */}
-          <div>
+          {/* =================== */}
+          {/* <div>
             <label
               className="block text-purple-500 text-sm font-bold mb-2"
               htmlFor="image"
@@ -197,7 +250,7 @@ const CreateCarpool = () => {
               Upload Image
             </label>
             <input type={"file"} onChange={OnChangeFile}></input>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
